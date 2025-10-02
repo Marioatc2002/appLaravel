@@ -11,10 +11,15 @@ class Course extends Model
 
     protected $fillable = [
         'course_key',
-        'title',
-        'course_cover',
-        'content',
-        'didactic_material',
-        'robotics_kit'
+        'course_name',
+        'robotic_kit_id'
     ];
+
+    /**
+     * Relación: un curso pertenece a un Robotic Kit
+     */
+    public function roboticsKit()
+    {
+        return $this->belongsTo(RoboticKit::class, 'robotic_kit_id');
+    }
 }

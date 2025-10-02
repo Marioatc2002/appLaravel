@@ -9,23 +9,29 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-public function up()
-{
-    Schema::create('courses', function (Blueprint $table) {
+    public function up(): void
+    {
+        Schema::create('courses', function (Blueprint $table) {
         $table->id();
         $table->string('course_key')->unique();
-        $table->string('title');
-        $table->string('course_cover')->nullable(); // URL o path de imagen
-        $table->text('content')->nullable();
-        $table->string('didactic_material')->nullable();
-        $table->string('robotics_kit');
+        $table->string('course_name');
+
+        // Relación correcta
+        $table->foreignId('robotics_kit_id')
+            ->constrained('robotic_kits')
+            ->onDelete('cascade');
+
         $table->timestamps();
+        $table->engine = 'InnoDB';
     });
-}
 
-public function down()
-{
-    Schema::dropIfExists('courses');
-}
+    }
 
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('courses');
+    }
 };
