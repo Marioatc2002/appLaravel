@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,14 +11,11 @@ class Course extends Model
     protected $fillable = [
         'course_key',
         'course_name',
-        'robotic_kit_id'
+        'robotics_kit_id',
     ];
 
-    /**
-     * Relación: un curso pertenece a un Robotic Kit
-     */
     public function roboticsKit()
     {
-        return $this->belongsTo(RoboticKit::class, 'robotic_kit_id');
+        return $this->belongsTo(RoboticsKit::class, 'robotics_kit_id');
     }
 }

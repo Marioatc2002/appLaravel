@@ -16,10 +16,11 @@ return new class extends Migration
         $table->string('course_key')->unique();
         $table->string('course_name');
 
-        // Relación correcta
+        
         $table->foreignId('robotics_kit_id')
-            ->constrained('robotic_kits')
-            ->onDelete('cascade');
+      ->constrained('robotic_kits') // 👈 
+      ->onDelete('cascade');
+
 
         $table->timestamps();
         $table->engine = 'InnoDB';

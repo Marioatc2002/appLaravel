@@ -4,7 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
-
+use App\Http\Controllers\RoboticsKitController;
+use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,10 @@ Route::prefix('courses')->name('courses.')->group(function () {
     Route::put('/{course}', [TestController::class, 'update'])->name('update');  // Actualizar curso
     Route::delete('/{course}', [TestController::class, 'delete'])->name('delete'); // Eliminar curso
 });
+//asignar ruta sw tipo recurso
+route::resource('robotics-kits', RoboticsKitController::class);
+
+
 
 // Dashboard protegido por autenticación y verificación de email
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -43,6 +48,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Ruta para listar todos los usuarios
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+    route::resource('robotics', RoboticsKitController::class);
+    Route::resource('courses', CourseController::class);
 });
 
 // Rutas de autenticación (login, register, etc.)
