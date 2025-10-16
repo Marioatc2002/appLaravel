@@ -10,7 +10,7 @@ class RoboticsKit extends Model
 
     protected $table = 'robotic_kits'; // 👈 fuerza a Eloquent a usar el nombre correcto
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'image'];
 
     public function courses()
     {

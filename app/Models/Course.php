@@ -12,6 +12,7 @@ class Course extends Model
         'course_key',
         'course_name',
         'robotics_kit_id',
+        'image'
     ];
 
     public function roboticsKit()

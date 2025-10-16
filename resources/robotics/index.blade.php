@@ -12,6 +12,7 @@
             <tr>
                 <td>{{ $kit->id }}</td>
                 <td>{{ $kit->name }}</td>
+                <td>{{ $kit->image }}</td>
                 <td>
                     <a href="{{ route('robotics-kits.show', $kit->id) }}">view</a>
                 </td>

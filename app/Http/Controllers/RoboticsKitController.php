@@ -37,8 +37,12 @@ class RoboticsKitController extends Controller
     public function store(Request $request)
     {
         //
+        $archivo = $request->file('image');
+        $nombreArchivo = $archivo->getClientOriginalName();
+        $ruta = $archivo->move(public_path('fotosRobotics'), $nombreArchivo);
         RoboticKit::create([
             'name' => $request->name
+            ,'image' => 'fotosRobotics/'.$nombreArchivo
             
         ]);
 

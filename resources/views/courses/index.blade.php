@@ -7,6 +7,7 @@
         <th>Key</th>
         <th>Name</th>
         <th>Kit</th>
+        <th>Image</th>
         <th>Actions</th>
     </tr>
 
@@ -16,6 +17,13 @@
         <td>{{ $course->course_key }}</td>
         <td>{{ $course->course_name }}</td>
         <td>{{ $course->roboticsKit->name ?? 'Sin kit asignado' }}</td>
+        <td>
+            @if ($course->image && file_exists(public_path('fotosCourses/' . $course->image)))
+                <img src="{{ asset('fotosCourses/' . $course->image) }}" alt="Imagen del curso" width="100">
+            @else
+                <span>Sin imagen</span>
+            @endif
+        </td>
 
         <td>
             <a href="{{ route('courses.edit', $course) }}">Edit</a>
