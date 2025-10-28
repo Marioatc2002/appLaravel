@@ -36,8 +36,9 @@
         <main class="container mt-4">
             @yield('content')
         </main>
-    </div>
-
+    </div>'
+    @yield('footer')'
+  
     <!-- Bootstrap JS Bundle (opcional para componentes interactivos) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

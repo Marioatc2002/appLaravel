@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\RoboticKit;
+use App\Models\RoboticsKit;
 use Illuminate\Http\Request;
 
 class RoboticsKitController extends Controller
@@ -18,7 +18,7 @@ class RoboticsKitController extends Controller
             abort(403);
 
         }
-        $kits = RoboticKit::all();
+        $kits = RoboticsKit::all();
         //dd($kits);
         return view('robotics.index', compact('kits'));
     }
@@ -40,7 +40,7 @@ class RoboticsKitController extends Controller
         $archivo = $request->file('image');
         $nombreArchivo = $archivo->getClientOriginalName();
         $ruta = $archivo->move(public_path('fotosRobotics'), $nombreArchivo);
-        RoboticKit::create([
+        RoboticsKit::create([
             'name' => $request->name
             ,'image' => 'fotosRobotics/'.$nombreArchivo
             
@@ -55,7 +55,7 @@ class RoboticsKitController extends Controller
      */
     public function show(string $id)
     {
-        $kit = RoboticKit::with('courses')->find($id);
+        $kit = RoboticsKit::with('courses')->find($id);
         return view('robotics.show', compact('kit'));
     }
 
@@ -64,7 +64,7 @@ class RoboticsKitController extends Controller
      */
     public function edit(string $id)
     {
-        $kit = RoboticKit::find($id);
+        $kit = RoboticsKit::find($id);
         return view('robotics.edit', compact('kit'));
     }
 
@@ -73,7 +73,7 @@ class RoboticsKitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $kit = RoboticKit::find($id);
+        $kit = RoboticsKit::find($id);
         $kit->update([
             'name' => $request->name
         ]);
@@ -85,7 +85,7 @@ class RoboticsKitController extends Controller
      */
     public function destroy(string $id)
     {
-        $kit = RoboticKit::find($id);
+        $kit = RoboticsKit::find($id);
         $kit->delete();
         return redirect()->route('robotics.index');
     }

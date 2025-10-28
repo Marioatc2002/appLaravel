@@ -19,17 +19,20 @@ Route::get('/', function () {
 
 // Rutas de courses (TestController)
 Route::prefix('courses')->name('courses.')->group(function () {
-    Route::get('/', [TestController::class, 'index'])->name('index');          // Listar todos los cursos
+    Route::get('/', [TestController::class, 'index'])->name('index');      // Listar todos los cursos
     Route::get('/create', [TestController::class, 'create'])->name('create');  // Formulario creación
-    Route::post('/', [TestController::class, 'store'])->name('store');         // Guardar curso nuevo
+    Route::post('/', [TestController::class, 'store'])->name('store');      // Guardar curso nuevo
     Route::get('/{course}', [TestController::class, 'read'])->name('read');    // Mostrar curso
     Route::get('/{course}/edit', [TestController::class, 'edit'])->name('edit'); // Formulario edición
     Route::put('/{course}', [TestController::class, 'update'])->name('update');  // Actualizar curso
     Route::delete('/{course}', [TestController::class, 'delete'])->name('delete'); // Eliminar curso
 });
-//asignar ruta sw tipo recurso
-route::resource('robotics-kits', RoboticsKitController::class);
 
+// --- RUTAS PÚBLICAS DE RECURSOS ---
+// Esta ya era pública
+route::resource('robotics-kits', RoboticsKitController::class);
+// MOVIMOS ESTA RUTA AQUÍ para que sea pública
+route::resource('robotics', RoboticsKitController::class);
 
 
 // Dashboard protegido por autenticación y verificación de email
@@ -45,11 +48,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('/', [ProfileController::class, 'update'])->name('update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
     });
-
+    route::resource('robotics', RoboticsKitController::class);
     // Ruta para listar todos los usuarios
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-    route::resource('robotics', RoboticsKitController::class);
+    // Esta ruta de 'courses' sigue protegida (diferente a la de TestController)
     Route::resource('courses', CourseController::class);
 });
 
