@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\RoboticKit;
+use App\Models\RoboticsKit;
 
 class RoboticsSeeder extends Seeder
 {
@@ -20,7 +20,7 @@ class RoboticsSeeder extends Seeder
 
         foreach ($kits as $kit) {
   
-            RoboticKit::updateOrCreate(
+            RoboticsKit::updateOrCreate(
                 ['id' => $kit['id']],
                 ['name' => $kit['name']]
             );

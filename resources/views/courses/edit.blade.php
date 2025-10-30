@@ -30,7 +30,6 @@
 @endsection 
 
 
-{{-- 4. "Llenamos" el hueco @yield('footer') (exactamente igual que en index) --}}
 @section('footer')
     <footer>
         <p>
