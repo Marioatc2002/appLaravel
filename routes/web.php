@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\RoboticsKitController;
+use App\Http\Controllers\Api\RoboticsKitControllers;
 use App\Http\Controllers\CourseController;
 /*
 |--------------------------------------------------------------------------
